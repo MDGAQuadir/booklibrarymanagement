@@ -14,7 +14,7 @@ public class Book {
 	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
-    private final Long bookId;
+    private Long bookId;
     private String title;
     private String author;
     private AvailabilityStatus status;
@@ -22,8 +22,13 @@ public class Book {
     public enum AvailabilityStatus {
         AVAILABLE, CHECKED_OUT
     }
+    
 
-    public Book(Long bookId, String title, String author, AvailabilityStatus status) {
+    public Book() {
+		super();
+	}
+
+	public Book(Long bookId, String title, String author, AvailabilityStatus status) {
         if (title == null || title.trim().isEmpty()) {
             throw new IllegalArgumentException("Title cannot be null or empty.");
         }
